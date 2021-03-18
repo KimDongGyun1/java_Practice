@@ -1,0 +1,112 @@
+//반복 함수와 재귀 함수
+
+//팩토리얼에 대하여
+public class Main11 {
+	
+	// 5! = 5 * 4 * 3 * 2 * 1 = 120
+	public static int factorial(int number) {
+		int sum = 1;
+		//i가 2부터 시작하여 number에 도달할때까지 sum에다가 i를 곱해줌
+		for(int i = 2; i <= number; i++)
+		{
+			sum *= i;
+		}
+		return sum;
+	}
+
+	public static void main(String[] args) {
+
+		System.out.println("10팩토리얼은 " + factorial(10));
+		
+	}
+
+}
+
+===========================================================
+//팩토리얼 간편화 프로그램 다시 살펴보기~
+public class Main11 {
+	
+	// 5! = 5 * 4 * 3 * 2 * 1 = 120
+	public static int factorial(int number) {
+		// 넘버가 1이라면 1을 반환
+		if(number == 1)
+			return 1;
+		// 그렇지 않다면 넘버 * 팩토리얼(넘버 -1)
+		else
+			// 5! = 5 * 4! 
+			// 5! = 5 * 4 * 3! 이러한 과정으로 실행됨
+			return number * factorial(number - 1);
+	}
+
+	public static void main(String[] args) {
+
+		System.out.println("10팩토리얼은 " + factorial(10));
+		
+	}
+
+}
+===========================================================
+//피보나치 수열 1 1 2 3 5 8
+
+public class Main12 {
+	
+	public static int fibonacci(int number) {
+		int one = 1;
+		int two = 1;
+		int result = -1;
+		if(number == 1)
+		{
+			return one;
+		}
+		else if(number == 2)
+		{
+			return two;
+		}
+		else
+		{
+			for(int i = 2; i < number; i++)
+			{
+				result = one + two;
+				one = two;
+				two = result;
+			}
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		// 만약에 양수가 아닌 음수를 넣으면 int result = -1; 의 값이 나온다.
+		System.out.println("피보나치 수열의 10번째 원소는 " +fibonacci(10) + "입니다.");
+	}
+
+}
+==================================================================
+//피보나치 수열 1 1 2 3 5 8
+//피보나치 수열을 간단히 만든 코드
+//하지만 계산하는 것이 많아서 계산하는데 시간이 오래걸림
+
+public class Main12 {
+	
+	public static int fibonacci(int number) {
+		if(number == 1)
+		{
+			return 1;
+		}
+		else if(number == 2)
+		{
+			return 1;
+		}
+		else
+		{
+			//피보나치 수열값을 구하려면 그 바로 앞에 있는 값과 두 번째 앞에 있는 값을 더해야함!!
+			return fibonacci(number - 1) + fibonacci(number -2);
+		}
+	}
+
+	public static void main(String[] args) {
+		// 만약에 양수가 아닌 음수를 넣으면 int result = -1; 의 값이 나온다.
+		System.out.println("피보나치 수열의 10번째 원소는 " +fibonacci(10) + "입니다.");
+	}
+
+}
+

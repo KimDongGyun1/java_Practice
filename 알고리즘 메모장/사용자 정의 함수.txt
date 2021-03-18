@@ -1,0 +1,132 @@
+//사용자 정의 함수
+
+//최대 공약수를 찾는 프로그램
+
+public class Main9 {
+	
+	// 함수는 반환형, 함수명, 매개변수로 구성된다.
+	public static int function(int a, int b, int c) {
+		int min;
+		// 최소값은 찾는 간단한 알고리즘
+		if(a > b)
+		{
+			if(b > c)
+			{
+				min = c;
+			}
+			else
+			{
+				min = b;
+			}
+		}
+		else
+		{
+			if(a > c)
+			{
+				min = c;
+			}
+			else
+			{
+				min = a;
+			}
+		}
+		//min부터 1까지 1씩 감소해가면서 최대공약수를 찾을 수 있도록 하는 것
+		for(int i = min; i > 0; i--)
+		{
+			//i로 나누어 떨어지는 값이 발견이 됐을때 i의 값을 반환시켜 종료한다.
+			if(a % i == 0 && b % i == 0 && c % i == 0)
+			{
+				return i;
+			}
+			
+		}
+		//최대공약수가 없을 경우에는 -1를 반환하여 최대공약수가 없다는 사실을 밝히는 것이다.
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		
+		System.out.println("(400, 300, 750)의 최대 공약수: " + function(400, 300 ,750));
+
+		
+	}
+==========================================================================
+//약수를 찾는 프로그램
+public class Main10 {
+	
+	// 매개변수 같은 경우는 함수가 내부적으로 처리하기위한 값들이 들어오는 공간
+	public static int function(int number, int k) {
+		for(int i = 1; i < number; i++)
+		{
+			//number을 i로 나눈 값의 나머지가 0이라면 k를 1씩빼준다.
+			if(number % i == 0)
+			{
+				k--;
+				if (k == 0)
+				{
+					//현재 i가 약수이기 때문에 리턴
+					return i;
+				}
+			}
+		}
+		//약수를 못찾았다면 -1를 반환하여 함수가 비정상적으로 종료되었다는걸 알려준다.
+		return -1;
+	}
+
+	public static void main(String[] args) {
+		//3050의 10번째 약수를 result에 담는다.
+		int result = function(3050, 10);
+		if(result == -1)
+		{
+			System.out.println("3050에 10번째 약수는 없습니다.");
+		}
+		else
+		{
+			System.out.println("3050의 10번째 약수는 " + result + "입니다.");
+		}
+		
+	}
+
+}
+======================================================
+// 문자의 마지막 단어를 추출해보는 프로그램
+
+
+public class Main10 {
+	
+	public static char function(String input) {
+		// input이라는 입력값이 들어왔을때 input의 길이(문자열의 길이에서 -1)
+		// 즉 마지막에 위치한 char 하나의 문자를 가져올수있도록하는것
+		return input.charAt(input.length() - 1);
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Hello World의 마지막 단어는 " + function("Hello World"));
+		
+	}
+
+}
+===============================================
+// 가장 큰 값을 찾는 프로그램
+
+public class Main10 {
+	
+	public static int max(int a, int b) {
+		// a가 크면 a를 반환하고 그렇지 않다면 b를 반환
+		return (a > b) ? a : b;
+	}
+	
+	public static int function(int a, int b, int c) {
+		int result = max(a, b);
+		//a와 b중 더 큰 값을 c와 비교
+		result = max(result, c);
+		return result;
+	}
+
+	public static void main(String[] args) {
+		
+		System.out.println("(345, 567, 789) 중에서 가장 큰 값은 " + function(345, 567, 789));
+		
+	}
+
+}
